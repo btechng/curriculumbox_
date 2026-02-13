@@ -79,7 +79,7 @@ const Dashboard = () => {
   const fetchSubscriptionStatus = async () => {
     try {
       const response = await fetch(
-        "http://localhost:5000/api/payment/subscription/status",
+        "https://curriculumbox-backend.onrender.com/api/payment/subscription/status",
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -98,7 +98,7 @@ const Dashboard = () => {
   const fetchLevels = async () => {
     try {
       const response = await fetch(
-        "http://localhost:5000/api/curriculum/stats",
+        "https://curriculumbox-backend.onrender.com/api/curriculum/stats",
       );
       const result = await response.json();
       if (result.success && result.stats) {
@@ -112,7 +112,7 @@ const Dashboard = () => {
   const fetchSubjectsForLevel = async (level) => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/curriculum/subjects?level=${encodeURIComponent(level)}`,
+        `https://curriculumbox-backend.onrender.com/api/curriculum/subjects?level=${encodeURIComponent(level)}`,
       );
       const result = await response.json();
       if (result.success) {
@@ -132,7 +132,7 @@ const Dashboard = () => {
       });
 
       const response = await fetch(
-        `http://localhost:5000/api/curriculum?${params}`,
+        `https://curriculumbox-backend.onrender.com/api/curriculum?${params}`,
       );
       const result = await response.json();
 
@@ -165,7 +165,7 @@ const Dashboard = () => {
       });
 
       const response = await fetch(
-        `http://localhost:5000/api/curriculum?${params}`,
+        `https://curriculumbox-backend.onrender.com/api/curriculum?${params}`,
       );
       const result = await response.json();
 
@@ -195,7 +195,7 @@ const Dashboard = () => {
     setGeneratingLesson(true);
     try {
       const response = await fetch(
-        "http://localhost:5000/api/lesson-notes/generate-detailed",
+        "https://curriculumbox-backend.onrender.com/api/lesson-notes/generate-detailed",
         {
           method: "POST",
           headers: {
@@ -248,7 +248,7 @@ const Dashboard = () => {
     setGeneratingQuestions(true);
     try {
       const response = await fetch(
-        "http://localhost:5000/api/questions/generate",
+        "https://curriculumbox-backend.onrender.com/api/questions/generate",
         {
           method: "POST",
           headers: {
@@ -300,25 +300,28 @@ const Dashboard = () => {
 
     setExportingPDF(true);
     try {
-      const response = await fetch("http://localhost:5000/api/export/pdf", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
+      const response = await fetch(
+        "https://curriculumbox-backend.onrender.com/api/export/pdf",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+          body: JSON.stringify({
+            level: scheme.level,
+            subject: scheme.subject,
+            term: scheme.term,
+            week: scheme.week,
+            topic: scheme.topic,
+            content: scheme.content || "",
+            objectives: scheme.objectives || [],
+            activities: scheme.activities || [],
+            teachingAids: scheme.teachingAids || [],
+            assessment: scheme.assessment || "",
+          }),
         },
-        body: JSON.stringify({
-          level: scheme.level,
-          subject: scheme.subject,
-          term: scheme.term,
-          week: scheme.week,
-          topic: scheme.topic,
-          content: scheme.content || "",
-          objectives: scheme.objectives || [],
-          activities: scheme.activities || [],
-          teachingAids: scheme.teachingAids || [],
-          assessment: scheme.assessment || "",
-        }),
-      });
+      );
 
       const data = await response.json();
 
@@ -349,13 +352,13 @@ const Dashboard = () => {
     if (downloadData) {
       // Create a proper download link
       const link = document.createElement("a");
-      link.href = `http://localhost:5000/api/lesson-notes/download/${downloadData.fileName}`;
+      link.href = `https://curriculumbox-backend.onrender.com/api/lesson-notes/download/${downloadData.fileName}`;
       link.setAttribute("download", downloadData.fileName);
       link.setAttribute("target", "_blank");
 
       // Add authorization header by using fetch instead
       fetch(
-        `http://localhost:5000/api/lesson-notes/download/${downloadData.fileName}`,
+        `https://curriculumbox-backend.onrender.com/api/lesson-notes/download/${downloadData.fileName}`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -406,7 +409,7 @@ const Dashboard = () => {
     setExportingPDF(true);
     try {
       const response = await fetch(
-        "http://localhost:5000/api/export/term-pdf",
+        "https://curriculumbox-backend.onrender.com/api/export/term-pdf",
         {
           method: "POST",
           headers: {

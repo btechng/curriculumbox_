@@ -72,7 +72,7 @@ const LoginSignup = () => {
     setReferralValidating(true);
     try {
       const res = await fetch(
-        `http://localhost:5000/api/referral/validate/${code}`,
+        `https://curriculumbox-backend.onrender.com/api/referral/validate/${code}`,
       );
       const data = await res.json();
       setReferralInfo(
@@ -111,14 +111,17 @@ const LoginSignup = () => {
     }
     setLoading(true);
     try {
-      const res = await fetch("http://localhost:5000/api/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email: formData.email,
-          password: formData.password,
-        }),
-      });
+      const res = await fetch(
+        "https://curriculumbox-backend.onrender.com/api/auth/login",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            email: formData.email,
+            password: formData.password,
+          }),
+        },
+      );
       const data = await res.json();
       if (data.success) {
         localStorage.setItem("token", data.token);
@@ -157,19 +160,22 @@ const LoginSignup = () => {
     }
     setLoading(true);
     try {
-      const res = await fetch("http://localhost:5000/api/auth/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          password: formData.password,
-          phone: formData.phone,
-          school: formData.school,
-          role: formData.role,
-          referralCode: formData.referralCode || undefined,
-        }),
-      });
+      const res = await fetch(
+        "https://curriculumbox-backend.onrender.com/api/auth/register",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            password: formData.password,
+            phone: formData.phone,
+            school: formData.school,
+            role: formData.role,
+            referralCode: formData.referralCode || undefined,
+          }),
+        },
+      );
       const data = await res.json();
       if (data.success && data.requiresVerification) {
         navigate("/verify-email", {
