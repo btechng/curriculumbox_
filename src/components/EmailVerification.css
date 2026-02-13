@@ -1,0 +1,400 @@
+/* EMAIL VERIFICATION STYLES */
+/* File: client/src/components/EmailVerification.css */
+
+.verification-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 50%, #bbf7d0 100%);
+  padding: 20px;
+}
+
+.verification-container {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+}
+
+/* Header */
+.verification-header {
+  margin-bottom: 40px;
+}
+
+.icon-circle {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #2d8659 0%, #1f6042 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.icon-circle.success {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  animation: scale-success 0.5s ease;
+}
+
+@keyframes scale-success {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.verification-header h1 {
+  margin: 0 0 10px 0;
+  color: #2d3748;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.verification-subtitle {
+  color: #6b7280;
+  font-size: 15px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.verification-subtitle strong {
+  color: #2d8659;
+  font-weight: 600;
+}
+
+/* Code Input */
+.code-input-container {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin: 30px 0;
+}
+
+.code-input {
+  width: 55px;
+  height: 65px;
+  font-size: 28px;
+  font-weight: 700;
+  text-align: center;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  background: #f9fafb;
+  transition: all 0.2s;
+  font-family: "Courier New", monospace;
+  color: #2d3748;
+}
+
+.code-input:focus {
+  outline: none;
+  border-color: #2d8659;
+  background: white;
+  box-shadow: 0 0 0 3px rgba(45, 134, 89, 0.1);
+  transform: translateY(-2px);
+}
+
+.code-input.error {
+  border-color: #ef4444;
+  background: #fef2f2;
+  animation: shake 0.5s;
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-10px);
+  }
+  75% {
+    transform: translateX(10px);
+  }
+}
+
+.code-input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Loading */
+.verification-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+  color: #2d8659;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+.spinner-small {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Error Message */
+.verification-error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #dc2626;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin: 20px 0;
+  font-size: 14px;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Resend */
+.resend-container {
+  margin: 30px 0;
+  padding-top: 30px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.resend-text {
+  color: #6b7280;
+  font-size: 14px;
+  margin: 0 0 10px 0;
+}
+
+.resend-btn {
+  background: transparent;
+  border: 2px solid #2d8659;
+  color: #2d8659;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s;
+}
+
+.resend-btn:hover:not(:disabled) {
+  background: #2d8659;
+  color: white;
+  transform: translateY(-2px);
+}
+
+.resend-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.countdown-text {
+  color: #6b7280;
+  font-size: 14px;
+  margin: 10px 0 0 0;
+}
+
+.countdown-text strong {
+  color: #2d8659;
+  font-weight: 700;
+}
+
+/* Resend Success Message */
+.resend-success {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #10b981;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  animation: slideInRight 0.3s ease;
+  z-index: 1000;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(400px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Tips */
+.verification-tips {
+  background: #f9fafb;
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 30px;
+  text-align: left;
+}
+
+.verification-tips h4 {
+  margin: 0 0 15px 0;
+  color: #2d3748;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.verification-tips ul {
+  margin: 0;
+  padding: 0 0 0 20px;
+  color: #6b7280;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.verification-tips li {
+  margin-bottom: 8px;
+}
+
+/* Success Animation */
+.success-animation {
+  margin-top: 30px;
+}
+
+.checkmark-circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: scale-in 0.5s ease;
+}
+
+.checkmark {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: block;
+  stroke-width: 4;
+  stroke: #fff;
+  stroke-miterlimit: 10;
+  box-shadow: inset 0px 0px 0px #10b981;
+}
+
+.checkmark.draw:after {
+  animation-duration: 0.8s;
+  animation-timing-function: ease;
+  animation-name: checkmark;
+  transform: scaleX(-1) rotate(135deg);
+}
+
+.checkmark:after {
+  opacity: 1;
+  height: 50px;
+  width: 25px;
+  transform-origin: left top;
+  border-right: 4px solid #fff;
+  border-top: 4px solid #fff;
+  content: "";
+  left: 12px;
+  top: 25px;
+  position: absolute;
+}
+
+@keyframes checkmark {
+  0% {
+    height: 0;
+    width: 0;
+    opacity: 1;
+  }
+  20% {
+    height: 0;
+    width: 25px;
+    opacity: 1;
+  }
+  40% {
+    height: 50px;
+    width: 25px;
+    opacity: 1;
+  }
+  100% {
+    height: 50px;
+    width: 25px;
+    opacity: 1;
+  }
+}
+
+@keyframes scale-in {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .verification-container {
+    padding: 30px 20px;
+  }
+
+  .code-input {
+    width: 45px;
+    height: 55px;
+    font-size: 24px;
+  }
+
+  .code-input-container {
+    gap: 8px;
+  }
+
+  .verification-header h1 {
+    font-size: 24px;
+  }
+
+  .icon-circle {
+    width: 70px;
+    height: 70px;
+  }
+}
