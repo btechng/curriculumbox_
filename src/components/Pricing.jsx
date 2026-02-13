@@ -18,7 +18,7 @@ const Pricing = () => {
     setLoading(true);
     try {
       const response = await fetch(
-        "http://localhost:5000/api/payment/initialize",
+        "https://curriculumbox-backend.onrender.com/api/payment/initialize",
         {
           method: "POST",
           headers: {
@@ -52,7 +52,7 @@ const Pricing = () => {
     setLoading(true);
     try {
       const response = await fetch(
-        "http://localhost:5000/api/payment/start-trial",
+        "https://curriculumbox-backend.onrender.com/api/payment/start-trial",
         {
           method: "POST",
           headers: {

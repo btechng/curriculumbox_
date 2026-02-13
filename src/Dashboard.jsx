@@ -497,7 +497,7 @@ const Dashboard = () => {
               Referrals
             </button>
 
-            <button className="logout-btn" onClick={logout}>
+            <button className="logout-btn" onClick={() => navigate("/")}>
               <LogOut size={18} />
               Logout
             </button>
@@ -1096,9 +1096,6 @@ const Dashboard = () => {
               </div>
 
               <h2>Upgrade to Premium</h2>
-              <p className="upgrade-subtitle">
-                Unlock unlimited lesson notes, questions, and exports
-              </p>
 
               <div className="features-list">
                 <div className="feature-item">
@@ -1112,10 +1109,6 @@ const Dashboard = () => {
                 <div className="feature-item">
                   <CheckCircle size={20} />
                   <span>PDF Exports (Single & Full Term)</span>
-                </div>
-                <div className="feature-item">
-                  <CheckCircle size={20} />
-                  <span>NERDC-Compliant Documents</span>
                 </div>
               </div>
 
@@ -1155,8 +1148,6 @@ const Dashboard = () => {
                 <Crown size={20} />
                 Upgrade Now
               </button>
-
-              <p className="trial-text">✨ Start with a 2-days free trial</p>
             </div>
           </div>
         </div>

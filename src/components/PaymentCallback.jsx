@@ -24,7 +24,7 @@ const PaymentCallback = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/payment/verify/${reference}`,
+        `https://curriculumbox-backend.onrender.com/api/payment/verify/${reference}`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,

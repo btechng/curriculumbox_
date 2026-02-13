@@ -98,7 +98,7 @@ const EmailVerification = () => {
 
     try {
       const response = await fetch(
-        "http://localhost:5000/api/auth/verify-email",
+        "https://curriculumbox-backend.onrender.com/api/auth/verify-email",
         {
           method: "POST",
           headers: {
